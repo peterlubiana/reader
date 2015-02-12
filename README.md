@@ -1,4 +1,5 @@
-Reader ( in-browser text-file reader ).
+#Reader 
+( in-browser text-file reader ).
 
 
 
@@ -22,9 +23,9 @@ Setup:
 
 #1 First you need to run Bower to get the modules that it uses:
 
-  run: 	 bower install
+     run: 	 bower install
   
-                 in your reader directory
+in your reader directory
 
 
    
@@ -32,9 +33,8 @@ Setup:
 
 #2 Then get the Node Modules
 
-run :      npm install
+   run :      npm install
 
-			
-	       	 in your reader directory
+in your reader directory
    
 

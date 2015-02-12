@@ -1,0 +1,5 @@
+# IGNORED DIRECTORIES 
+# ( So you don't upload all the 103Mbs of node moduels to git ).
+
+node_modules
+bower_components

@@ -23,7 +23,7 @@ and display the characters one and one.
 
 ###1: First you need to run Bower to get the modules that it uses:
 run:
-	bower install
+    bower install
   
 ..in your reader directory.
 
@@ -34,8 +34,13 @@ run:
 ###2: Then get the Node Modules
 
 run:
-	npm install
+    npm install
 
 ..in your reader directory.
-   
 
+
+
+
+##Screenshot
+
+![The opening screen.](https://raw.githubusercontent.com/peterlubiana/reader/master/screenshot.png "Screenshot")

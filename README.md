@@ -10,7 +10,7 @@ and display the characters one and one.
 
 
 
-Dependencies:
+##Dependencies:
 ( All of these need to be installed to work with this app )
 
 - Yeoman.io
@@ -19,22 +19,23 @@ Dependencies:
 - Node.js
 
 
-Setup:
+##Setup:
 
-#1 First you need to run Bower to get the modules that it uses:
-
-     run: 	 bower install
+###1: First you need to run Bower to get the modules that it uses:
+run:
+	bower install
   
-in your reader directory
+..in your reader directory.
 
 
    
 
 
-#2 Then get the Node Modules
+###2: Then get the Node Modules
 
-   run :      npm install
+run:
+	npm install
 
-in your reader directory
+..in your reader directory.
    
 

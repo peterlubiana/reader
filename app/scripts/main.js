@@ -6,7 +6,7 @@
 
 var reader = {
 
-	text:"",
+	text:'',
 	currentChar:0,
 	_this:this,
 	updater:undefined,
@@ -16,10 +16,10 @@ var reader = {
 
 	displayTextFile:function(data){
 		//console.log(data);
-		var $ta = $("#textarea");
+		var $ta = $('#textarea');
 		this.setFullText(data);
 		$ta.show();
-		$html = $ta.html();
+		
 
 		this.initReading();
 	},
@@ -49,19 +49,18 @@ var reader = {
 	},
 
 	hasNextChar:function(){
-		//console.log("fulltxt length: "+this.text.length +" / currentChar: "+this.getCurrentChar());
-		if(this.text.length == this.getCurrentChar())
+		//console.log('fulltxt length: '+this.text.length +' / currentChar: '+this.getCurrentChar());
+		if(this.text.length === this.getCurrentChar())
 			return false;
 		return true;
 	},
 
 	initReading:function(){
 		this.setCurrentChar(0);
-		var _this = this;
-		var $ta = $("#textarea");
-		$ta.html("");
+		var $ta = $('#textarea');
+		$ta.html('');
 		this.toggleReadingMenu();
-		this.showElement("#resetApp");
+		this.showElement('#resetApp');
 		this.readNextChar();
 		/*this.updater = setInterval(function(){
 			
@@ -81,7 +80,7 @@ var reader = {
 		var _this = this;
 		this.isReading = true;
 		var readFunc = function(){
-			$ta = $("#textarea");
+			var $ta = $('#textarea');
 			var $html = $ta.html();
 
 			if(_this.hasNextChar()){
@@ -93,29 +92,25 @@ var reader = {
 				_this.toggleFinishedMenu();
 			}
 			
-		}
+		};
 
 		setTimeout(readFunc,_this.readSpeed);
 	},
 
-	isReading:function(){
-		
-	},
-
 	toggleMenu:function(){
-		$("#main-menu").toggle();
+		$('#main-menu').toggle();
 	},
 
 	toggleFinishedMenu:function(){
-		$("#finishedmenu").toggle();
+		$('#finishedmenu').toggle();
 	},
 
 	toggleTextarea:function(){
-		$("#textarea").toggle();
+		$('#textarea').toggle();
 	},
 
 	toggleReadingMenu:function(){
-		$("#readingmenu").toggle();
+		$('#readingmenu').toggle();
 	},
 
 	/**
@@ -126,12 +121,12 @@ var reader = {
 		var file = fileobject;
 
 		var fr = new FileReader();
-		fr.readAsText(file,"utf-8");
-		fr.onloadend = function(arg){
+		fr.readAsText(file,'utf-8');
+		fr.onloadend = function(e){
 			var result = fr.result;
 			_this.toggleMenu();
 			_this.displayTextFile(result);
-		}
+		};
 	},
 
 	readSlower:function(){
@@ -151,19 +146,18 @@ var reader = {
 	},
 
 	resetApp:function(){
-		this.hideElement("#finishedmenu");
-		this.hideElement("#readingmenu");
-		this.hideElement("#textarea");
-
-		this.showElement("#main-menu");
+		this.hideElement('#finishedmenu');
+		this.hideElement('#readingmenu');
+		this.hideElement('#textarea');
+		this.showElement('#main-menu');
 	},
 
-	hideElement:function(css_expression){
-		$(css_expression).hide();
+	hideElement:function(cssExpression){
+		$(cssExpression).hide();
 	},
 
-	showElement:function(css_expression){
-		$(css_expression).show();
+	showElement:function(cssExpression){
+		$(cssExpression).show();
 	},
 
 	stopReading:function(){
@@ -181,25 +175,25 @@ var reader = {
 
 $(document).ready(function(){
 
-	$("#textarea").hide();
+	$('#textarea').hide();
 	reader.toggleFinishedMenu();
 	reader.toggleReadingMenu();
-	reader.hideElement("#resetApp");
+	reader.hideElement('#resetApp');
 	
 	/***
 			DRAGGNING OPERATION HANDLERS.
 	****/
 
-	$(document).on("drop",function(e){
+	$(document).on('drop',function(e){
 		e.preventDefault();
 	});
 
-	$(document).on("dragover",function(e){
+	$(document).on('dragover',function(e){
 		e.preventDefault();
 	});
 
 	// Actual drop operation.
-	$("#droparea").on("drop",function(e){
+	$('#droparea').on('drop',function(e){
 		e.preventDefault();
 		e.stopPropagation();
 
@@ -214,15 +208,15 @@ $(document).ready(function(){
 			HTML ELEMENT BUTTON HANDLERS
 	***/
 
-	$(document).on("click","#readnewfile",function(e){
+	$(document).on('click','#readnewfile',function(e){
 		reader.toggleMenu();
 		reader.toggleFinishedMenu();
 		reader.toggleTextarea();
 		reader.toggleReadingMenu();
-		reader.hideElement("#resetApp");
+		reader.hideElement('#resetApp');
 	});
 
-	$(document).on("click","#readagain",function(e){
+	$(document).on('click','#readagain',function(e){
 		reader.initReading();
 		reader.toggleFinishedMenu();
 		reader.toggleReadingMenu();
@@ -231,29 +225,29 @@ $(document).ready(function(){
 
 	// READINGMENU, the menu that shows up while reading.
 
-	$(document).on("click","#rmenuslower",function(e){
+	$(document).on('click','#rmenuslower',function(e){
 		reader.readSlower();
 	});
 
-	$(document).on("click","#rmenustop",function(e){
+	$(document).on('click','#rmenustop',function(e){
 		reader.stopReading();
 	});
 
-	$(document).on("click","#rmenufaster",function(e){
+	$(document).on('click','#rmenufaster',function(e){
 		reader.readFaster();
 		
 	});
 
-	$(document).on("click","#resetApp",function(e){
+	$(document).on('click','#resetApp',function(e){
 		reader.resetApp();
-		reader.hideElement("#resetApp");
+		reader.hideElement('#resetApp');
 	});
 
-	$(document).on("click","#sendRawTextInputButton",function(e){
+	$(document).on('click','#sendRawTextInputButton',function(e){
 		reader.toggleMenu();
-		var $i = $("#rawTextInputArea");
+		var $i = $('#rawTextInputArea');
 		var data = $i.val();
-		$i.val("");
+		$i.val('');
 		reader.displayTextFile(data);
 	});
 

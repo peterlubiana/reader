@@ -120,14 +120,37 @@ body {
   border:dotted 4px blue;
 }
 
-
 #textarea{
   font-size:2em;
+  word-wrap:break-word;
 }
 
 #finishedmenu{
   text-align:center;
 }
+
+/*
+     TEXT INPUT AREA..
+*/
+
+#rawInputForm{
+  margin-top:20px;
+  text-align:center;
+}
+
+#rawTextInputArea{
+  width:100%;
+  clear:both;
+  text-align:center;
+}
+
+#sendRawTextInputButton{
+}
+
+
+
+
+
 
 #readingmenu{
   text-align:center;

@@ -15,7 +15,7 @@ var reader = {
 	isReading:false,
 
 	displayTextFile:function(data){
-		console.log(data);
+		//console.log(data);
 		var $ta = $("#textarea");
 		this.setFullText(data);
 		$ta.show();
@@ -49,7 +49,7 @@ var reader = {
 	},
 
 	hasNextChar:function(){
-		console.log("fulltxt length: "+this.text.length +" / currentChar: "+this.getCurrentChar());
+		//console.log("fulltxt length: "+this.text.length +" / currentChar: "+this.getCurrentChar());
 		if(this.text.length == this.getCurrentChar())
 			return false;
 		return true;
@@ -103,8 +103,7 @@ var reader = {
 	},
 
 	toggleMenu:function(){
-		$("#droparea").toggle();
-		$(".jumbotron").toggle();
+		$("#main-menu").toggle();
 	},
 
 	toggleFinishedMenu:function(){
@@ -156,8 +155,7 @@ var reader = {
 		this.hideElement("#readingmenu");
 		this.hideElement("#textarea");
 
-		this.showElement(".jumbotron");
-		this.showElement("#droparea");
+		this.showElement("#main-menu");
 	},
 
 	hideElement:function(css_expression){
@@ -249,6 +247,14 @@ $(document).ready(function(){
 	$(document).on("click","#resetApp",function(e){
 		reader.resetApp();
 		reader.hideElement("#resetApp");
+	});
+
+	$(document).on("click","#sendRawTextInputButton",function(e){
+		reader.toggleMenu();
+		var $i = $("#rawTextInputArea");
+		var data = $i.val();
+		$i.val("");
+		reader.displayTextFile(data);
 	});
 
 });

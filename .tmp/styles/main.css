@@ -4610,3 +4610,6 @@ body {
   text-align: center;
   position: fixed;
   bottom: 10px; }
+
+#resetApp {
+  width: 100%; }

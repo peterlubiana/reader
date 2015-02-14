@@ -61,6 +61,7 @@ var reader = {
 		var $ta = $("#textarea");
 		$ta.html("");
 		this.toggleReadingMenu();
+		this.showElement("#resetApp");
 		this.readNextChar();
 		/*this.updater = setInterval(function(){
 			
@@ -126,7 +127,7 @@ var reader = {
 		var file = fileobject;
 
 		var fr = new FileReader();
-		fr.readAsText(file,"UTF-8");
+		fr.readAsText(file,"utf-8");
 		fr.onloadend = function(arg){
 			var result = fr.result;
 			_this.toggleMenu();
@@ -150,6 +151,23 @@ var reader = {
 			this.readSpeed = 0;
 	},
 
+	resetApp:function(){
+		this.hideElement("#finishedmenu");
+		this.hideElement("#readingmenu");
+		this.hideElement("#textarea");
+
+		this.showElement(".jumbotron");
+		this.showElement("#droparea");
+	},
+
+	hideElement:function(css_expression){
+		$(css_expression).hide();
+	},
+
+	showElement:function(css_expression){
+		$(css_expression).show();
+	},
+
 	stopReading:function(){
 		this.isReading = false;
 	},
@@ -168,6 +186,7 @@ $(document).ready(function(){
 	$("#textarea").hide();
 	reader.toggleFinishedMenu();
 	reader.toggleReadingMenu();
+	reader.hideElement("#resetApp");
 	
 	/***
 			DRAGGNING OPERATION HANDLERS.
@@ -202,6 +221,7 @@ $(document).ready(function(){
 		reader.toggleFinishedMenu();
 		reader.toggleTextarea();
 		reader.toggleReadingMenu();
+		reader.hideElement("#resetApp");
 	});
 
 	$(document).on("click","#readagain",function(e){
@@ -226,6 +246,9 @@ $(document).ready(function(){
 		
 	});
 
-
+	$(document).on("click","#resetApp",function(e){
+		reader.resetApp();
+		reader.hideElement("#resetApp");
+	});
 
 });
